@@ -75,7 +75,10 @@ export const config: TemplateConfig = {
       "cityCoordinate",
       "c_cat1",
       "c_about",
-      "c_service1"
+      "c_service1",
+      "dm_directoryParents.name",
+      "dm_directoryParents.slug",
+      "dm_directoryParents.meta.entityType"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -97,22 +100,25 @@ export const config: TemplateConfig = {
  * take on the form: featureName/entityId
  */
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  // var url = "";
-  // var name: any = document.name.toLowerCase();
-  // var string: any = name.toString();;
-  // let result: any = string.replaceAll(" ", "-");
-  // document.dm_directoryParents.map((result: any, i: Number) => {
-  //   if (i > 0) {
-  //     url += result.slug + "/"
-  //   }
-  // })
-  // if (!document.slug) {
-  //   url += `${result}.html`;
-  // } else {
-  //   url += `${document.slug.toString()}.html`;
-  // }
+  var url = "";
+  var name: any = document.name.toLowerCase();
+  var string: any = name.toString();
+  console.log(name,"name");
+  let result: any = string.replaceAll(" ", "-");
+  document.dm_directoryParents?.map((result: any, i: Number) => {
+    if (i > 0) {
+      url += result.slug + "/";
+    }
+  });
+  if (!document.slug) {
+    url += `${result}.html`;
+  } else {
+    url += `${document.slug.toString()}.html`;
+  }
+  console.log("urlrlrl", url);
 
-  return document.id;
+  return url;
+  
 };
 /**
  * Defines a list of paths which will redirect to the path created by getPath.
@@ -282,7 +288,8 @@ const Location: Template<ExternalApiRenderData> = ({
     name,
     c_cat1,
     c_about,
-    c_service1
+    c_service1,
+    dm_directoryParents,
   } = document;
 
  let templateData = { document: document, __meta: __meta };
@@ -450,7 +457,14 @@ breadcrumbScheme.push({
         {" "}
         <AnalyticsScopeProvider name={""}>
 <Header1 _site={_site}/>
+
       {/* <PageLayout global={_site}> */}
+      <BreadCrumbs
+              name={name}
+              address={address}
+              parents={dm_directoryParents}
+              baseUrl={relativePrefixToRoot}
+            ></BreadCrumbs>
 
 
       <div className="container">
@@ -479,6 +493,7 @@ breadcrumbScheme.push({
         <h1 style={{marginLeft:"55px",marginTop:"22px"}}>About {name}</h1>
         <About c_about={c_about}/>
         <Services c_service1={c_service1}/>
+  
         <Catogories c_cat1={c_cat1}/>
   
         <div className="nearby-sec">

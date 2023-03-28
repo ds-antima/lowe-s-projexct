@@ -201,7 +201,7 @@ export default function Footer(props:any){
 		})}</div></div>
 		<div>
 		<div style={{ width: "45%"}}>{props._site.c_footer_4?.title}
-		<div style={{display:"flex" }}>{props?._site?.c_footer_4.icon?.map((res4:any)=>{
+		<div style={{display:"flex",width:"142px" }}>{props?._site?.c_footer_4.icon?.map((res4:any)=>{
 			return(
 				<div style={{width:"40px",height:"40px"}}><img src={res4.url} alt="" /></div>
 			)

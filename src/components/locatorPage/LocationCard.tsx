@@ -37,20 +37,24 @@ function opentime(e: any) {
 }
 
     const { address } = result.rawData;
-//     var name: any = result.rawData.name?.toLowerCase();
-//   var region: any = result.rawData.address.region?.toLowerCase();
-//   var initialregion: any = region.toString();
-//   var finalregion: any = initialregion.replaceAll(" ", "-");
-//   var city: any = result.rawData.address.city?.toLowerCase();
-//   var initialrcity: any = city.toString();
-//   var finalcity: any = initialrcity.replaceAll(" ", "-");
-//   var string: any = name.toString();
-//   let result1: any = string.replaceAll(" ", "-");
-//  if (!result.rawData.slug) {
-//    url= `/${result.rawData.id}-${result1}.html`;
-//  } else {
-//    url= `/${result.rawData.slug.toString()}.html`;
-//  }
+    var name: any = result.rawData.name?.toLowerCase();
+    var count: any =result.rawData.address.countryCode?.toLocaleLowerCase();
+    var region: any = result.rawData.address.region?.toLowerCase();
+    var initialregion: any = region.toString();
+    var finalregion: any = initialregion.replaceAll(" ", "-");
+    var city: any = result.rawData.address.city?.toLowerCase();
+    var initialrcity: any = city.toString();
+    var finalcity: any = initialrcity.replaceAll(" ", "-");
+    var string: any = name.toString();
+    let result1: any = string.replaceAll(" ", "-");
+  
+    let url1:any = count+"/"+finalregion+"/"+finalcity+"/"+result.rawData.slug+".html";
+  
+    if (!result.rawData.slug) {
+      url= `/${result.rawData.id}-${result1}.html`;
+    } else {
+      url= `/${result.rawData.slug.toString()}.html`;
+    }
   
   return (
     <div className={`location result-list-inner-${result.id} result`} id={`result-${result.id}`} key={`result-${result.rawData.id}`}>
@@ -64,7 +68,7 @@ function opentime(e: any) {
                data-ya-track={`viewDetail -${result.rawData.name}`}
                eventName={`viewDetail -${result.rawData.name}`}
                rel="noopener noreferrer"
-               href={`/${result.rawData.id}`}>{result.rawData.name}
+               href={`${url1}`}>{result.rawData.name}
               </Link></h2>
               {typeof result.distance != "undefined" ?
                 <div className="distance">
