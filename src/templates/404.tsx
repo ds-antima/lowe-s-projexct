@@ -10,6 +10,8 @@ import {
 import * as React from "react";
 import { favicon } from "../../sites-global/global";
 import { StaticData } from "../../sites-global/staticData";
+import Footer from "../components/layouts/footer";
+import Header1 from "../components/layouts/header";
 import PageLayout from "../components/layouts/PageLayout";
 export const config: TemplateConfig = {
   stream: {
@@ -26,7 +28,7 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en_GB"],
+      locales: ["en"],
       primary: false,
     },
   },
@@ -62,7 +64,8 @@ const FourOhFour: Template<TemplateRenderProps> = ({
   } = document;
   return (
     <>
-      <PageLayout global={_site}>
+      {/* <PageLayout global={_site}> */}
+      <Header1 _site={_site}/>
         <div className="content-list">
           <div className="container">
             <div className="sec-title text-center">
@@ -80,7 +83,8 @@ const FourOhFour: Template<TemplateRenderProps> = ({
 
           </div>
         </div>
-      </PageLayout>
+      {/* </PageLayout> */}
+      <Footer _site={_site}/>
     </>
   );
 };
