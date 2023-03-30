@@ -65,6 +65,7 @@ const Contact = (props: any) => {
               address={address}
               latitude={latitude}
               longitude={longitude}
+              style={{backgroundColor:"#000080"}}
             />
           </li>
         </ul>
