@@ -330,7 +330,7 @@ const Location: Template<ExternalApiRenderData> = ({
     }
   }
   document.dm_directoryParents &&
-  document.dm_directoryParents.map((i: any, index: any) => {
+  document?.dm_directoryParents?.map((i: any, index: any) => {
     if (i.meta.entityType.id == "ce_country") {
       document.dm_directoryParents[index].name =
         document.dm_directoryParents[index].name;
@@ -351,7 +351,7 @@ const Location: Template<ExternalApiRenderData> = ({
       });
     } else if (i.meta.entityType.id == "ce_region") {
       let url = "";
-      document.dm_directoryParents.map((j: any) => {
+      document?.dm_directoryParents?.map((j: any) => {
         if (
           j.meta.entityType.id != "ce_region" &&
           j.meta.entityType.id != "ce_city" &&
@@ -375,7 +375,7 @@ const Location: Template<ExternalApiRenderData> = ({
       });
     } else if (i.meta.entityType.id == "ce_city") {
       let url = "";
-      document.dm_directoryParents.map((j: any) => {
+      document?.dm_directoryParents?.map((j: any) => {
         if (
           j.meta.entityType.id != "ce_city" &&
           j.meta.entityType.id != "ce_root"
@@ -407,7 +407,7 @@ breadcrumbScheme.push({
     name: document.name,
   },
 });
-  let imageurl = photoGallery ? photoGallery.map((element: any) => {
+  let imageurl = photoGallery ? photoGallery?.map((element: any) => {
     return element.image.url
   }) : null;
   console.log(document)
@@ -425,11 +425,11 @@ breadcrumbScheme.push({
           name: name,
           address: {
             "@type": "PostalAddress",
-            streetAddress: address.line1,
-            addressLocality: address.city,
-            addressRegion: address.region,
-            postalCode: address.postalCode,
-            addressCountry: address.countryCode,
+            streetAddress: address?.line1,
+            addressLocality: address?.city,
+            addressRegion: address?.region,
+            postalCode: address?.postalCode,
+            addressCountry: address?.countryCode,
           },
           openingHoursSpecification: hoursSchema,
           description: description,
@@ -493,7 +493,7 @@ breadcrumbScheme.push({
         <h1 style={{marginLeft:"55px",marginTop:"22px"}}>About {name}</h1>
         <About c_about={c_about}/>
         <Services c_service1={c_service1}/>
-  
+        <h1 style={{margin:"28px"}}>Your Store's Top Categories</h1>
         <Catogories c_cat1={c_cat1}/>
   
         <div className="nearby-sec">
