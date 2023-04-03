@@ -17,6 +17,7 @@ import {
   HeadConfig,
 } from "@yext/pages";
 import BreadCrumbs from "../components/layouts/Breadcrumb";
+import Footer from "../components/layouts/footer";
 import Banner from "../components/locationDetail/banner";
 import { StaticData } from "../../sites-global/staticData";
 import { Addresssvg, favicon, mobilesvg, regionNames, stagingBaseurl } from "../../sites-global/global";
@@ -27,6 +28,7 @@ import PageLayout from "../components/layouts/PageLayout";
 import OpenClose from "../components/commons/openClose";
 // import timesvg from "../images/watch-icn.svg";
 import { Link } from "@yext/pages/components";
+import Header1 from "../components/layouts/header";
 var currentUrl = "";
 export const config: TemplateConfig = {
   stream: {
@@ -460,6 +462,7 @@ const City: Template<TemplateRenderProps> = ({
         }}
       />
       {/* <PageLayout global={_site}> */}
+      <Header1 _site={_site}/>
         <Banner _site={_site}/>
         <BreadCrumbs
           name={name}
@@ -480,6 +483,7 @@ const City: Template<TemplateRenderProps> = ({
             </div>
           </div>
         </div>
+        <Footer _site={_site}/>
       {/* </PageLayout> */}
     </>
   );

@@ -16,7 +16,8 @@ import Banner from "../components/locationDetail/banner";
 import { StaticData } from "../../sites-global/staticData";
 import PageLayout from "../components/layouts/PageLayout";
 import { favicon, regionNames, stagingBaseurl } from "../../sites-global/global";
-
+import Header1 from "../components/layouts/header";
+import Footer from "../components/layouts/footer";
 
 
 /**
@@ -282,6 +283,7 @@ const country: Template<TemplateRenderProps> = ({
   return (
     <>
       {/* <PageLayout global={_site}> */}
+      <Header1 _site={_site}/>
       <Banner _site={_site}/>
         <BreadCrumbs
           name={regionNames.of(name)}
@@ -312,6 +314,7 @@ const country: Template<TemplateRenderProps> = ({
         </div>
 
       {/* </PageLayout> */}
+      <Footer _site={_site}/>
     </>
   );
 };
