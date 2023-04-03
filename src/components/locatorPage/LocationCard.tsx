@@ -52,7 +52,9 @@ function opentime(e: any) {
 
 const { address, hours, additionalHoursText, timezone } = result.rawData;
     var name: any = result.rawData.name?.toLowerCase();
-    var count: any =result.rawData.address.countryCode?.toLocaleLowerCase();
+    var country: any =result.rawData.address.countryCode?.toLocaleLowerCase();
+    var initialcountry: any = country.toString();
+    var finalcountry: any = initialcountry.replaceAll(" ", "-");
     var region: any = result.rawData.address.region?.toLowerCase();
     var initialregion: any = region.toString();
     var finalregion: any = initialregion.replaceAll(" ", "-");
@@ -62,12 +64,12 @@ const { address, hours, additionalHoursText, timezone } = result.rawData;
     var string: any = name.toString();
     let result1: any = string.replaceAll(" ", "-");
   
-    let url1:any = count+"/"+finalregion+"/"+finalcity+"/"+result.rawData.slug+".html";
+    let url1:any = finalcountry+"/"+finalregion+"/"+finalcity+"/"+result.rawData.slug+".html";
   
     if (!result.rawData.slug) {
-      url= `/${result.rawData.id}-${result1}.html`;
+      url= `${url1}`;
     } else {
-      url= `/${result.rawData.slug.toString()}.html`;
+      url= `${url1}`;
     }
   
   return (
@@ -82,7 +84,7 @@ const { address, hours, additionalHoursText, timezone } = result.rawData;
                data-ya-track={`viewDetail -${result.rawData.name}`}
                eventName={`viewDetail -${result.rawData.name}`}
                rel="noopener noreferrer"
-               href={`${url1}`}>{result.rawData.name}
+               href={`${url}`}>{result.rawData.name}
               </Link></h2>
               {typeof result.distance != "undefined" ?
                 <div className="distance">
@@ -94,40 +96,13 @@ const { address, hours, additionalHoursText, timezone } = result.rawData;
             
             <div className="icon-row content-col address-with-availablity notHighlight">
               <Address address={address} />
-              {/* {result.rawData.hours ? <>
-              <div className="mt-2">
-              {/* <h6>Opening Hours</h6> */}
-                {/* {result.rawData.hours?.reopenDate ? <>
-                  <div className="icon"> <img className=" " src={timesvg} width="20" height="20" alt="" /> </div>
-                  <div className=" flex open-now-string items-center " data-id={`main-shop-${result.rawData.id}`} onClick={opentime}>
-                    {StaticData.tempClosed}
-                  </div>
-                </>
-                  : <> 
-                    <div className=" flex open-now-string items-center" data-id={`main-shop-${result.rawData.id}`} >
-                      <OpenClose timezone={result.rawData.timezone} hours={result.rawData.hours} deliveryHours={result.rawData.hours}></OpenClose>
-                    </div></>} */}
-
-
-                {/* <div className={`storelocation-openCloseTime  capitalize hidden`}>
-                    {hoursopen?
-                   typeof result.rawData.hours === "undefined" ? ("") :
-                     <Hours key={result.rawData.name} additionalHoursText={result.rawData.additionalHoursText} hours={result.rawData.hours} c_specific_day={result.rawData.c_specific_day} />
-                   :''}
-                </div> */}
-              {/* </div></> : <div className="closeddot notHighlight red-dot">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
-           <circle id="Ellipse_5" data-name="Ellipse 5" cx="4" cy="4" r="4" fill="#ad1e1f"/>
-         </svg>
-                   <div className="hours-info text-lg font-second-main-font closeddot"> 
-                   Closed
-                   </div> */}
-                   {/* </div>} */} 
-
+             
 
 
                    <div>
-                    {/* this section is open cloase house in loaction card */}
+                    {/* this section is holiday house in loaction card */}
+                    {/* <Model name={StaticData.Holdiay}
+                    holidayHours={result.rawData.hours?.holidayHours}/> */}
                       <div className="open-close ">
                 
                 <div className="hours-sec onhighLight">
@@ -162,7 +137,7 @@ const { address, hours, additionalHoursText, timezone } = result.rawData;
             </div>
          
              <div className="button-bx" >
-              <Link  type="button" href={`${url1}`} className=" btn notHighlight "
+              <Link  type="button" href={`${url}`} className=" btn notHighlight "
               data-ya-track={`viewStore -${result.rawData.name}`}
               eventName={`viewStore -${result.rawData.name}`}
               rel="noopener noreferrer" style={{backgroundColor:"#000080"}}

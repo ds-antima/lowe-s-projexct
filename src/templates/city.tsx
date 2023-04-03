@@ -459,7 +459,8 @@ const City: Template<TemplateRenderProps> = ({
           itemListElement: breadcrumbScheme,
         }}
       />
-      <PageLayout global={_site}>
+      {/* <PageLayout global={_site}> */}
+        <Banner _site={_site}/>
         <BreadCrumbs
           name={name}
           address={address}
@@ -479,7 +480,7 @@ const City: Template<TemplateRenderProps> = ({
             </div>
           </div>
         </div>
-      </PageLayout>
+      {/* </PageLayout> */}
     </>
   );
 };

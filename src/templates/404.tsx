@@ -13,6 +13,7 @@ import { StaticData } from "../../sites-global/staticData";
 import Footer from "../components/layouts/footer";
 import { css } from "@emotion/react";
 import Header1 from "../components/layouts/header";
+import "../index.css";
 import PageLayout from "../components/layouts/PageLayout";
 export const config: TemplateConfig = {
   stream: {
