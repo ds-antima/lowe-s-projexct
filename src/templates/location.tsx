@@ -548,7 +548,7 @@ const Location: Template<ExternalApiRenderData> = ({
               <Services c_service1={c_service1} />
             </div>
             <div>
-              <h1 style={{ margin: "28px" }}>Your Store's Top Categories</h1>
+              <h1 style={{ marginTop:"332px" }}>Your Store's Top Categories</h1>
               <Catogories c_cat1={c_cat1} />
             </div>
           </div>
